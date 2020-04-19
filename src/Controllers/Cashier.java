@@ -32,8 +32,7 @@ public class Cashier {
 
     Gson gson = new Gson();
     String json;
-    //Savings Account
-    //Checkings Account
+
 
     /**
      * This method let us get the JSON of savings accounts
