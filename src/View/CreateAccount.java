@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controllers.Cashier;
 import java.awt.event.KeyEvent;
 
 /**
@@ -91,6 +92,11 @@ public class CreateAccount extends javax.swing.JFrame {
 
         submit1.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         submit1.setText("CREATE");
+        submit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submit1MouseClicked(evt);
+            }
+        });
 
         accountType.setFont(new java.awt.Font("PT Serif Caption", 3, 14)); // NOI18N
         accountType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Savings Account", "Checkings Account" }));
@@ -185,6 +191,19 @@ public class CreateAccount extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_idKeyTyped
+
+    private void submit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submit1MouseClicked
+        // Create account button
+        String id = this.id.getText();
+        String titularId = accountId.getText();
+        String kindOfAccount = accountType.getSelectedItem().toString();
+        Cashier account = new Cashier();
+        account.addAccount(id, titularId, kindOfAccount);
+        this.setVisible(false);
+        CashierWindow cashierWindow = new CashierWindow();
+        cashierWindow.setVisible(true);
+
+    }//GEN-LAST:event_submit1MouseClicked
 
     /**
      * @param args the command line arguments

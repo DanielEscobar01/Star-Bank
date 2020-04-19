@@ -8,6 +8,11 @@ package Controllers;
 import Accounts.*;
 import Customers.*;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -16,8 +21,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
+ * This class let us create a cashier
  *
  * @author danielescobar
  */
@@ -28,55 +35,103 @@ public class Cashier {
     //Savings Account
     //Checkings Account
 
-    public void addAccount(String id, String titularId, String kindOfAccount) {
-        //Verify information before creating an account using verification package
-        if (kindOfAccount.equals("Savings Account")) {
-            SavingsAccount a = new SavingsAccount(id, titularId);
-            // Saber cuando poner el "]"
-            String h = "";
-            try (BufferedReader br = new BufferedReader(new FileReader("cuentas.json"))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    h += line;
-                }
-            } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+    public String returnJsonSavings() {
+        String json = "";
+        try (BufferedReader br = new BufferedReader(new FileReader("savingsAccounts.json"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                json += line;
             }
-            json = h + gson.toJson(a);
-            System.out.println(json);
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("cuentas.json"))) {
-                bw.append(json + ",");
-            } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-            //La unica forma de añadirla es que tenga 20000 de saldo
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (json.length() == 0) {
+            return "[]";
         } else {
-            CheckingAccount a = new CheckingAccount(id, titularId);
-            String h = "";
-            try (BufferedReader br = new BufferedReader(new FileReader("cuentas.json"))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    h += line;
-                }
-            } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-            json = h + gson.toJson(a);
-            System.out.println(json);
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("cuentas.json"))) {
-                bw.append(json + ",");
-            } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-
+            return json;
         }
     }
+
+    public String returnJsonCheckings() {
+        String json = "";
+        try (BufferedReader br = new BufferedReader(new FileReader("checkingsAccounts.json"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                json += line;
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        if (json.length() == 0) {
+            return "[]";
+        } else {
+            return json;
+        }
+    }
+
+    public static void writeSavings(String json, String account) {
+        String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
+        if (json.length() == 2) {
+            auxiliar = auxiliar + account;
+        } else {
+            auxiliar = auxiliar + "," + account;
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("savingsAccounts.json"))) {
+            bw.write(auxiliar);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void writeCheckings(String json, String account) {
+        String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
+        if (json.length() == 2) {
+            auxiliar = auxiliar + account;
+        } else {
+            auxiliar = auxiliar + "," + account;
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("checkingsAccounts.json"))) {
+            bw.write(auxiliar);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    /**
+     * This method let us add an account to JSON
+     *
+     * @param id The identification of the customer account
+     * @param titularId The identification of the customer
+     * @param typeAccount The type of account
+     */
+    public void addAccount(String id, String titularId, String typeAccount) {
+        Gson gson = new Gson();     //Object to implements GSON API
+        // Filtering information by type of account with cases
+        switch (typeAccount) {
+            case "Savings Account":
+                String jsonSavings = returnJsonSavings(); //The whole json file
+                SavingsAccount a = new SavingsAccount(id, titularId);
+                String newSavingAccount = gson.toJson(a) + "]";
+                writeSavings(jsonSavings, newSavingAccount);
+                break;
+            case "Checking Account":
+                String jsonCheckings = returnJsonCheckings(); //The whole json file
+                CheckingAccount b = new CheckingAccount(id, titularId);
+                String newCheckingAccount = gson.toJson(b) + "]";
+                writeCheckings(jsonCheckings, newCheckingAccount);
+                break;
+        }
+
+    }
+
 }
