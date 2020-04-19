@@ -146,7 +146,7 @@ public class Cashier {
                 String newSavingAccount = gson.toJson(a) + "]";
                 writeSavings(jsonSavings, newSavingAccount);
                 break;
-            case "Checking Account":
+            case "Checkings Account":
                 String jsonCheckings = returnJsonCheckings(); //The whole json file
                 CheckingAccount b = new CheckingAccount(id, titularId);
                 String newCheckingAccount = gson.toJson(b) + "]";
