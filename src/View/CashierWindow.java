@@ -16,6 +16,7 @@ public class CashierWindow extends javax.swing.JFrame {
      */
     public CashierWindow() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -28,77 +29,129 @@ public class CashierWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         cashier = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         createAccount = new javax.swing.JButton();
         deactivateAccount = new javax.swing.JButton();
-        withdraw = new javax.swing.JButton();
         deposit = new javax.swing.JButton();
+        withdraw = new javax.swing.JButton();
         exit = new javax.swing.JButton();
 
         cashier.setFont(new java.awt.Font("PT Serif Caption", 3, 24)); // NOI18N
         cashier.setText("CASHIER");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cashier");
+
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
         titleLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 48)); // NOI18N
         titleLabel.setText("STAR BANK");
 
         createAccount.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         createAccount.setText("CREATE ACCOUNT");
+        createAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createAccountMouseClicked(evt);
+            }
+        });
 
         deactivateAccount.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         deactivateAccount.setText("DEACTIVATE ACCOUNT");
+        deactivateAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deactivateAccountMouseClicked(evt);
+            }
+        });
+
+        deposit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
+        deposit.setText("DEPOSIT");
+        deposit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                depositMouseClicked(evt);
+            }
+        });
 
         withdraw.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         withdraw.setText("WITHDRAW");
 
-        deposit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
-        deposit.setText("DEPOSIT");
-
         exit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         exit.setText("EXIT");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(titleLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(exit))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(createAccount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deactivateAccount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deactivateAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(exit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deactivateAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(titleLabel)))
-                .addContainerGap(69, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deactivateAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(98, 98, 98))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountMouseClicked
+        // CREATE AN ACCOUNT
+        CreateAccount createAccountWindow = new CreateAccount();
+        createAccountWindow.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_createAccountMouseClicked
+
+    private void depositMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_depositMouseClicked
+        // BOTON CONSIGNAR
+        DepositWindow depositWindow = new DepositWindow();
+        depositWindow.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_depositMouseClicked
+
+    private void deactivateAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deactivateAccountMouseClicked
+        // BOTON DESACTIVAR CUENTA
+        DeactivateWindow deactivateWindow = new DeactivateWindow();
+        deactivateWindow.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_deactivateAccountMouseClicked
 
     /**
      * @param args the command line arguments
@@ -141,6 +194,7 @@ public class CashierWindow extends javax.swing.JFrame {
     private javax.swing.JButton deactivateAccount;
     private javax.swing.JButton deposit;
     private javax.swing.JButton exit;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton withdraw;
     // End of variables declaration//GEN-END:variables
