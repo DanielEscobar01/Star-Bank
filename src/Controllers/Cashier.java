@@ -35,6 +35,11 @@ public class Cashier {
     //Savings Account
     //Checkings Account
 
+    /**
+     * This method let us get the JSON of savings accounts
+     *
+     * @return The string with savings accounts JSON
+     */
     public String returnJsonSavings() {
         String json = "";
         try (BufferedReader br = new BufferedReader(new FileReader("savingsAccounts.json"))) {
@@ -55,6 +60,11 @@ public class Cashier {
         }
     }
 
+    /**
+     * This method let us get the JSON of checking accounts
+     *
+     * @return The string with checking accounts JSON
+     */
     public String returnJsonCheckings() {
         String json = "";
         try (BufferedReader br = new BufferedReader(new FileReader("checkingsAccounts.json"))) {
@@ -75,6 +85,12 @@ public class Cashier {
         }
     }
 
+    /**
+     * This method let us write a new account into savings account JSON
+     *
+     * @param json The string of JSON file
+     * @param account The string with values of account
+     */
     public static void writeSavings(String json, String account) {
         String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
         if (json.length() == 2) {
@@ -91,6 +107,12 @@ public class Cashier {
         }
     }
 
+    /**
+     * This method let us write a new account into checking account JSON
+     *
+     * @param json The string of JSON file
+     * @param account The string with values of account
+     */
     public static void writeCheckings(String json, String account) {
         String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
         if (json.length() == 2) {
