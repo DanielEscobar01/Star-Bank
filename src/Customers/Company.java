@@ -6,7 +6,7 @@
 package Customers;
 
 /**
- *
+ * This class let us create a company customer
  * @author danielescobar
  */
 public class Company extends Customer {

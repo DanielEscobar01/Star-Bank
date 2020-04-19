@@ -6,7 +6,7 @@
 package Customers;
 
 /**
- *
+ * This class let us create a natural person customer
  * @author danielescobar
  */
 public class NaturalPerson extends Customer {
