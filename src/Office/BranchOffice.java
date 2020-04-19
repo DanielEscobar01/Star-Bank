@@ -6,7 +6,7 @@
 package Office;
 
 /**
- *
+ * This class let us create a branch office
  * @author danielescobar
  */
 public class BranchOffice {
@@ -15,6 +15,20 @@ public class BranchOffice {
     private String address;
     private String name;
     private String city;
+
+    /**
+     * Constructor of a branch office
+     * @param id The identification of the branch office
+     * @param address The address of the branch office
+     * @param name The name of the branch office
+     * @param city The city of the branch office
+     */
+    public BranchOffice(String id, String address, String name, String city) {
+        setId(id);
+        setAddress(address);
+        setName(name);
+        setCity(city);
+    }
 
     /**
      * This method let us get the identification of the branch office
