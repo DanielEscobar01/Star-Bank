@@ -28,7 +28,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         titleLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        principalLabel = new javax.swing.JLabel();
         cashier = new javax.swing.JButton();
         aboutBranchOffice = new javax.swing.JButton();
 
@@ -37,8 +37,8 @@ public class Main extends javax.swing.JFrame {
         titleLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 48)); // NOI18N
         titleLabel.setText("STAR BANK");
 
-        jLabel1.setFont(new java.awt.Font("PT Serif Caption", 3, 24)); // NOI18N
-        jLabel1.setText("PRINCIPAL BRANCH OFFICE");
+        principalLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 24)); // NOI18N
+        principalLabel.setText("PRINCIPAL BRANCH OFFICE");
 
         cashier.setFont(new java.awt.Font("PT Serif Caption", 3, 24)); // NOI18N
         cashier.setText("CASHIER");
@@ -57,7 +57,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(titleLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(jLabel1)))
+                        .addComponent(principalLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -72,7 +72,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(principalLabel)
                 .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aboutBranchOffice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +121,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutBranchOffice;
     private javax.swing.JButton cashier;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel principalLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
