@@ -5,6 +5,10 @@
  */
 package Accounts;
 
+import Controllers.Operation;
+import java.util.ArrayList;
+
+
 /**
  * This class let us create accounts
  * @author danielescobar
@@ -16,6 +20,7 @@ public abstract class Account {
     protected float balance;
     protected boolean isActive;
     protected String office;
+    protected ArrayList<Operation> operations = new ArrayList<>();
     //protected BranchOffice branchOffice;
 
     /**

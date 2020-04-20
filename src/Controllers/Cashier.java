@@ -33,7 +33,6 @@ public class Cashier {
     Gson gson = new Gson();
     String json;
 
-
     /**
      * This method let us get the JSON of savings accounts
      *
@@ -136,29 +135,12 @@ public class Cashier {
      * @param typeAccount The type of account
      */
     public void addAccount(String id, String titularId, String typeAccount) {
-        Gson gson = new Gson();     //Object to implements GSON API
-        // Filtering information by type of account with cases
-        switch (typeAccount) {
-            case "Savings Account":
-                String jsonSavings = returnJsonSavings(); //The whole json file
-                SavingsAccount a = new SavingsAccount(id, titularId);
-                String newSavingAccount = gson.toJson(a) + "]";
-                writeSavings(jsonSavings, newSavingAccount);
-                break;
-            case "Checkings Account":
-                String jsonCheckings = returnJsonCheckings(); //The whole json file
-                CheckingAccount b = new CheckingAccount(id, titularId);
-                String newCheckingAccount = gson.toJson(b) + "]";
-                writeCheckings(jsonCheckings, newCheckingAccount);
-                break;
-        }
-
-    }
-    
-    public void deactivateAccount(){
+        Verify verification = new Verify();
         
     }
 
-    
-    
+    public void deactivateAccount() {
+
+    }
+
 }

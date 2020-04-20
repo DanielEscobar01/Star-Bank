@@ -6,7 +6,7 @@
 package Controllers;
 
 /**
- *
+ * This class will let us record an operation
  * @author danielescobar
  */
 public class Operation {

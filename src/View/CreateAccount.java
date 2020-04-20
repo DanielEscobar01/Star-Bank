@@ -202,7 +202,6 @@ public class CreateAccount extends javax.swing.JFrame {
         this.setVisible(false);
         CashierWindow cashierWindow = new CashierWindow();
         cashierWindow.setVisible(true);
-
     }//GEN-LAST:event_submit1MouseClicked
 
     /**
