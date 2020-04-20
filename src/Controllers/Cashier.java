@@ -154,5 +154,11 @@ public class Cashier {
         }
 
     }
+    
+    public void deactivateAccount(){
+        
+    }
 
+    
+    
 }
