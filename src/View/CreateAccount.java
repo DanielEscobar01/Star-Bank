@@ -197,8 +197,8 @@ public class CreateAccount extends javax.swing.JFrame {
         String id = this.id.getText();
         String titularId = accountId.getText();
         String kindOfAccount = accountType.getSelectedItem().toString();
-        Cashier account = new Cashier();
-        account.addAccount(id, titularId, kindOfAccount);
+        Cashier cashier = new Cashier();
+        cashier.addAccount(id, titularId, kindOfAccount);
         this.setVisible(false);
         CashierWindow cashierWindow = new CashierWindow();
         cashierWindow.setVisible(true);

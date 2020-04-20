@@ -136,7 +136,7 @@ public class Cashier {
      */
     public void addAccount(String id, String titularId, String typeAccount) {
         Verify verification = new Verify();
-        
+        verification.addAccount(id, titularId, typeAccount);  
     }
 
     public void deactivateAccount() {
