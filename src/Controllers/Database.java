@@ -26,97 +26,127 @@ public class Database {
     String json;
 
     /**
-     * This method let us get the JSON of savings accounts
+     * This method let us get the JSON with the respective account type
      *
-     * @return The string with savings accounts JSON
+     * @param typeAccount The type of account your looking for
+     * @return The JSON with all the accounts of that type
      */
-    public String returnJsonSavings() {
+    public String returnJson(String typeAccount) {
         String json = "";
-        try (BufferedReader br = new BufferedReader(new FileReader("savingsAccounts.json"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                json += line;
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        switch (typeAccount) {
+            case "Savings Account":
+                try (BufferedReader br = new BufferedReader(new FileReader("savingsAccounts.json"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                        json += line;
+                    }
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                if (json.length() == 0) {
+                    return "[]";
+                } else {
+                    return json;
+                }
+            case "Checkings Account":
+                try (BufferedReader br = new BufferedReader(new FileReader("checkingsAccounts.json"))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                        json += line;
+                    }
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                if (json.length() == 0) {
+                    return "[]";
+                } else {
+                    return json;
+                }
         }
-        if (json.length() == 0) {
-            return "[]";
-        } else {
-            return json;
-        }
+        return null;
     }
 
     /**
-     * This method let us get the JSON of checking accounts
+     * This method let us save a new account into the JSON file
      *
-     * @return The string with checking accounts JSON
+     * @param typeAccount The type of account to be saved
+     * @param account The account.ToString()
      */
-    public String returnJsonCheckings() {
+    public void writeNewAccount(String typeAccount, String account) {
+        switch (typeAccount) {
+            case "Savings Account":
+                String json = returnJson("Savings Account");
+                String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
+                if (json.length() == 2) {
+                    auxiliar = auxiliar + account;
+                } else {
+                    auxiliar = auxiliar + "," + account;
+                }
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("savingsAccounts.json"))) {
+                    bw.write(auxiliar);
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                break;
+            case "Checkings Account":
+                json = returnJson("Checkings Account");
+                auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
+                if (json.length() == 2) {
+                    auxiliar = auxiliar + account;
+                } else {
+                    auxiliar = auxiliar + "," + account;
+                }
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("checkingsAccounts.json"))) {
+                    bw.write(auxiliar);
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                break;
+        }
+    }
+
+    public void cleanJson(String typeAccount) {
         String json = "";
-        try (BufferedReader br = new BufferedReader(new FileReader("checkingsAccounts.json"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                json += line;
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        if (json.length() == 0) {
-            return "[]";
-        } else {
-            return json;
-        }
-    }
-
-    /**
-     * This method let us write a new account into savings account JSON
-     *
-     * @param json The string of JSON file
-     * @param account The string with values of account
-     */
-    public static void writeSavings(String json, String account) {
-        String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
-        if (json.length() == 2) {
-            auxiliar = auxiliar + account;
-        } else {
-            auxiliar = auxiliar + "," + account;
-        }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("savingsAccounts.json"))) {
-            bw.write(auxiliar);
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        switch (typeAccount) {
+            case "Savings Account":
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("savingsAccounts.json"))) {
+                    bw.write(json);
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                break;
+            case "Checkings Account":
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter("checkingsAccounts.json"))) {
+                    bw.write(json);
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                break;
         }
     }
 
     /**
-     * This method let us write a new account into checking account JSON
      *
-     * @param json The string of JSON file
-     * @param account The string with values of account
+     * @param json
+     * @param accountType
+     * @param checkingsAccounts
      */
-    public static void writeCheckings(String json, String account) {
-        String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
-        if (json.length() == 2) {
-            auxiliar = auxiliar + account;
-        } else {
-            auxiliar = auxiliar + "," + account;
-        }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("checkingsAccounts.json"))) {
-            bw.write(auxiliar);
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+    public void overwrite(String json, String accountType, Object[] accounts) {
+
     }
-    
+
 }
