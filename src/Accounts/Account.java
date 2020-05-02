@@ -8,9 +8,9 @@ package Accounts;
 import Controllers.Operation;
 import java.util.ArrayList;
 
-
 /**
  * This class let us create accounts
+ *
  * @author danielescobar
  */
 public abstract class Account {
@@ -25,6 +25,7 @@ public abstract class Account {
 
     /**
      * The constructor of a regular account
+     *
      * @param id The identification of the account
      * @param titularId The identification of the titular of the account
      */
@@ -134,4 +135,16 @@ public abstract class Account {
      * @param value The value to be withdraw from the account
      */
     abstract public void withdraw(float value);
+
+    /**
+     * This method let us make a deposit into an account
+     * @param value The amount to be deposit
+     */
+    public void deposit(float value) {
+        if (balance < 10000 && value >= 20000) {
+            isActive = true;
+        }
+        balance += value;
+    }
+    
 }
