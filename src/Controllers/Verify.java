@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author danielescobar
  */
 public class Verify {
-
+    
     Gson gson = new Gson();
     String json;
     Database database = new Database();
@@ -31,7 +31,7 @@ public class Verify {
     public boolean existAccountId(String id, String typeAccount) {
         Database database = new Database();
         switch (typeAccount) {
-            case "Savings Account":  
+            case "Savings Account":
                 SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
                 for (int i = 0; i < savingsAccounts.length; i++) {
                     if (savingsAccounts[i].getId().equals(id)) {
@@ -61,9 +61,10 @@ public class Verify {
      * the parameter, False if not.
      */
     public boolean isCorrectTitularId(String titularId, String id, String typeAccount) {
+        Database database = new Database();
         switch (typeAccount) {
             case "Savings Account":
-                SavingsAccount[] savingsAccounts = gson.fromJson(json, SavingsAccount[].class);
+                SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
                 for (int i = 0; i < savingsAccounts.length; i++) {
                     if (savingsAccounts[i].getId().equals(id)) {
                         if (savingsAccounts[i].getTitularId().equals(titularId)) {
@@ -73,7 +74,7 @@ public class Verify {
                 }
                 break;
             case "Checkings Account":
-                CheckingAccount[] checkingsAccounts = gson.fromJson(json, CheckingAccount[].class);
+                CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
                 for (int i = 0; i < checkingsAccounts.length; i++) {
                     if (checkingsAccounts[i].getId().equals(id)) {
                         if (checkingsAccounts[i].getTitularId().equals(titularId)) {
@@ -114,9 +115,10 @@ public class Verify {
     public void deactivateAccount(String id, String titularId, String typeAccount) {
         if (existAccountId(id, typeAccount)) {
             if (isCorrectTitularId(titularId, id, typeAccount)) {
+                Database database = new Database();
                 switch (typeAccount) {
                     case "Savings Account":
-                        SavingsAccount[] savingsAccounts = gson.fromJson(json, SavingsAccount[].class);
+                        SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
                         for (int i = 0; i < savingsAccounts.length; i++) {
                             if (savingsAccounts[i].getId().equals(id)) {
                                 savingsAccounts[i].setIsActive(false);
@@ -124,11 +126,12 @@ public class Verify {
                         }
                         database.cleanJson(typeAccount);
                         for (int i = 0; i < savingsAccounts.length; i++) {
-                            addAccount(savingsAccounts[i].getId(), savingsAccounts[i].getTitularId(), "Savings Account");
+                            String newSavingAccount = gson.toJson(savingsAccounts[i]) + "]";
+                            database.writeNewAccount(typeAccount, newSavingAccount);
                         }
                         break;
                     case "Checkings Account":
-                        CheckingAccount[] checkingsAccounts = gson.fromJson(json, CheckingAccount[].class);
+                        CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
                         for (int i = 0; i < checkingsAccounts.length; i++) {
                             if (checkingsAccounts[i].getId().equals(id)) {
                                 checkingsAccounts[i].setIsActive(false);
@@ -136,7 +139,8 @@ public class Verify {
                         }
                         database.cleanJson(typeAccount);
                         for (int i = 0; i < checkingsAccounts.length; i++) {
-                            addAccount(checkingsAccounts[i].getId(), checkingsAccounts[i].getTitularId(), "Checkings Account");
+                            String newCheckingAccount = gson.toJson(checkingsAccounts[i]) + "]";
+                            database.writeNewAccount(typeAccount, newCheckingAccount);
                         }
                         break;
                 }
@@ -187,14 +191,18 @@ public class Verify {
             switch (typeAccount) {
                 case "Savings Account":
                     SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
+                    int j = 0;
                     for (int i = 0; i < savingsAccounts.length; i++) {
                         if (savingsAccounts[i].getId().equals(accountId)) {
                             savingsAccounts[i].deposit(amount);
+                            j = i;
                         }
                     }
+                    System.out.println(savingsAccounts[j].getBalance());
                     database.cleanJson(typeAccount);
                     for (int i = 0; i < savingsAccounts.length; i++) {
-                        addAccount(savingsAccounts[i].getId(), savingsAccounts[i].getTitularId(), "Savings Account");
+                        String newSavingAccount = gson.toJson(savingsAccounts[i]) + "]";
+                        database.writeNewAccount(typeAccount, newSavingAccount);
                     }
                     break;
                 case "Checkings Account":
@@ -206,14 +214,15 @@ public class Verify {
                     }
                     database.cleanJson(typeAccount);
                     for (int i = 0; i < checkingsAccounts.length; i++) {
-                        addAccount(checkingsAccounts[i].getId(), checkingsAccounts[i].getTitularId(), "Checkings Account");
+                        String newCheckingAccount = gson.toJson(checkingsAccounts[i]) + "]";
+                        database.writeNewAccount(typeAccount, newCheckingAccount);
                     }
                     break;
             }
         } else {
             JOptionPane.showMessageDialog(null, "The account does not exist, please check the account ID and the type of account");
-
+            
         }
     }
-
+    
 }
