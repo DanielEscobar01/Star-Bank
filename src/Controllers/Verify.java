@@ -8,6 +8,7 @@ package Controllers;
 import Accounts.CheckingAccount;
 import Accounts.SavingsAccount;
 import com.google.gson.Gson;
+import javax.swing.JOptionPane;
 
 /**
  * This class will let us check if the parameters are okay to be saved
@@ -139,6 +140,8 @@ public class Verify {
                         break;
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "The account does not exist");
         }
     }
 

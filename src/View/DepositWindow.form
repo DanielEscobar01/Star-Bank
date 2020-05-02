@@ -145,6 +145,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="MAKE DEPOSIT"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="makeDepositMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

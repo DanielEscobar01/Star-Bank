@@ -115,6 +115,10 @@ public class Database {
         }
     }
 
+    /**
+     * This method let us clean the JSON to add new values
+     * @param typeAccount 
+     */
     public void cleanJson(String typeAccount) {
         String json = "";
         switch (typeAccount) {

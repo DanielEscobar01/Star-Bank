@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controllers.Cashier;
 import java.awt.event.KeyEvent;
 
 /**
@@ -73,6 +74,11 @@ public class DepositWindow extends javax.swing.JFrame {
 
         makeDeposit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         makeDeposit.setText("MAKE DEPOSIT");
+        makeDeposit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                makeDepositMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,6 +148,14 @@ public class DepositWindow extends javax.swing.JFrame {
         if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
             evt.consume();
         }    }//GEN-LAST:event_depositAmountKeyTyped
+
+    private void makeDepositMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_makeDepositMouseClicked
+        String account = this.accountId.getText();
+        double deposit = Double.parseDouble(this.depositAmount.getText());
+        Cashier cashier = new Cashier();
+        cashier.makeDeposit(account, deposit);
+        
+    }//GEN-LAST:event_makeDepositMouseClicked
 
     /**
      * @param args the command line arguments

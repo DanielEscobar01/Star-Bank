@@ -38,7 +38,12 @@ public class Cashier {
      * @param typeAccount The type of account to be deleted
      */
     public void deactivateAccount(String id, String titularId, String typeAccount) {
-
+        Verify verify = new Verify();
+        
     }
 
+    public void makeDeposit(String accountId,double amount){
+        
+    }
+    
 }
