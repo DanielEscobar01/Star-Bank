@@ -42,6 +42,8 @@ public class DepositWindow extends javax.swing.JFrame {
         depositAmountLabel = new javax.swing.JLabel();
         depositAmount = new javax.swing.JTextField();
         makeDeposit = new javax.swing.JButton();
+        accountType = new javax.swing.JComboBox<>();
+        accountTypeLabel = new javax.swing.JLabel();
 
         deactivate.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         deactivate.setText("DEACTIVATE");
@@ -80,6 +82,11 @@ public class DepositWindow extends javax.swing.JFrame {
             }
         });
 
+        accountType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Checking Account", "Savings Account" }));
+
+        accountTypeLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
+        accountTypeLabel.setText("ENTER ACCOUNT TYPE:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,26 +100,31 @@ public class DepositWindow extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(depositAmountLabel)
-                            .addComponent(accountIdLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(accountIdLabel)
+                            .addComponent(accountTypeLabel))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(accountId, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(depositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(depositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(makeDeposit)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountIdLabel)
                     .addComponent(accountId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(accountTypeLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(depositAmountLabel)
                     .addComponent(depositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,10 +163,10 @@ public class DepositWindow extends javax.swing.JFrame {
 
     private void makeDepositMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_makeDepositMouseClicked
         String account = this.accountId.getText();
+        String accountType = this.accountType.getSelectedItem().toString();
         double deposit = Double.parseDouble(this.depositAmount.getText());
         Cashier cashier = new Cashier();
-        cashier.makeDeposit(account, deposit);
-        
+        cashier.makeDeposit(account, accountType, deposit);
     }//GEN-LAST:event_makeDepositMouseClicked
 
     /**
@@ -195,6 +207,8 @@ public class DepositWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField accountId;
     private javax.swing.JLabel accountIdLabel;
+    private javax.swing.JComboBox<String> accountType;
+    private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JButton deactivate;
     private javax.swing.JTextField depositAmount;
     private javax.swing.JLabel depositAmountLabel;

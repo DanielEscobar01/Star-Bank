@@ -5,9 +5,7 @@
  */
 package Controllers;
 
-
 import com.google.gson.Gson;
-
 
 /**
  * This class let us create a cashier
@@ -33,6 +31,7 @@ public class Cashier {
 
     /**
      * This method let us deactivate an account
+     *
      * @param id The identification of the account to be deleted
      * @param titularId The identification of the titular of the account
      * @param typeAccount The type of account to be deleted
@@ -42,8 +41,16 @@ public class Cashier {
         verify.deactivateAccount(id, titularId, typeAccount);
     }
 
-    public void makeDeposit(String accountId,double amount){
-        
+    /**
+     * This method let us make a deposit into an account
+     * @param accountType The type of the account 
+     * @param accountId The identification of the account
+     * @param typeAccount The type of the account
+     * @param amount The amount to be deposited into the account
+     */
+    public void makeDeposit(String accountType, String accountId, double amount) {
+        Verify verify = new Verify();
+        verify.makeDeposit(accountId, accountType, amount);
     }
-    
+
 }

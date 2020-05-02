@@ -173,4 +173,44 @@ public class Verify {
         }
     }
 
+    /**
+     * This method let us make a deposit into an account
+     * @param accountId The identification of the account
+     * @param typeAccount The type of the account
+     * @param amount The amount to be deposited into the account
+     */
+    public void makeDeposit(String accountId, String typeAccount, double amount) {
+        if (existAccountId(accountId, typeAccount)) {
+            switch (typeAccount) {
+                case "Savings Account":
+                    SavingsAccount[] savingsAccounts = gson.fromJson(json, SavingsAccount[].class);
+                    for (int i = 0; i < savingsAccounts.length; i++) {
+                        if (savingsAccounts[i].getId().equals(accountId)) {
+                            savingsAccounts[i].deposit(amount);
+                        }
+                    }
+                    database.cleanJson(typeAccount);
+                    for (int i = 0; i < savingsAccounts.length; i++) {
+                        addAccount(savingsAccounts[i].getId(), savingsAccounts[i].getTitularId(), "Savings Account");
+                    }
+                    break;
+                case "Checkings Account":
+                    CheckingAccount[] checkingsAccounts = gson.fromJson(json, CheckingAccount[].class);
+                    for (int i = 0; i < checkingsAccounts.length; i++) {
+                        if (checkingsAccounts[i].getId().equals(accountId)) {
+                            checkingsAccounts[i].deposit(amount);
+                        }
+                    }
+                    database.cleanJson(typeAccount);
+                    for (int i = 0; i < checkingsAccounts.length; i++) {
+                        addAccount(checkingsAccounts[i].getId(), checkingsAccounts[i].getTitularId(), "Checkings Account");
+                    }
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "The account does not exist, please check the account ID and the type of account");
+
+        }
+    }
+    
 }
