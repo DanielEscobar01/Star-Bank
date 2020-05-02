@@ -45,7 +45,6 @@ public class Cashier {
      * This method let us make a deposit into an account
      * @param accountType The type of the account 
      * @param accountId The identification of the account
-     * @param typeAccount The type of the account
      * @param amount The amount to be deposited into the account
      */
     public void makeDeposit(String accountType, String accountId, double amount) {

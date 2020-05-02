@@ -127,9 +127,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="accountId">
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="accountIdKeyTyped"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="depositAmountLabel">
           <Properties>

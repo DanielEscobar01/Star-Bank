@@ -38,7 +38,6 @@ public class Database {
                 try (BufferedReader br = new BufferedReader(new FileReader("savingsAccounts.json"))) {
                     String line;
                     while ((line = br.readLine()) != null) {
-                        System.out.println(line);
                         json += line;
                     }
                 } catch (FileNotFoundException ex) {
@@ -147,7 +146,7 @@ public class Database {
      *
      * @param json
      * @param accountType
-     * @param checkingsAccounts
+     * @param accounts
      */
     public void overwrite(String json, String accountType, Object[] accounts) {
 

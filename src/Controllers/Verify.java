@@ -29,9 +29,10 @@ public class Verify {
      * @return True if the account exist, False if not
      */
     public boolean existAccountId(String id, String typeAccount) {
+        Database database = new Database();
         switch (typeAccount) {
-            case "Savings Account":
-                SavingsAccount[] savingsAccounts = gson.fromJson(json, SavingsAccount[].class);
+            case "Savings Account":  
+                SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
                 for (int i = 0; i < savingsAccounts.length; i++) {
                     if (savingsAccounts[i].getId().equals(id)) {
                         return true;
@@ -39,7 +40,7 @@ public class Verify {
                 }
                 break;
             case "Checkings Account":
-                CheckingAccount[] checkingsAccounts = gson.fromJson(json, CheckingAccount[].class);
+                CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
                 for (int i = 0; i < checkingsAccounts.length; i++) {
                     if (checkingsAccounts[i].getId().equals(id)) {
                         return true;
@@ -181,10 +182,11 @@ public class Verify {
      * @param amount The amount to be deposited into the account
      */
     public void makeDeposit(String accountId, String typeAccount, double amount) {
+        Database database = new Database();
         if (existAccountId(accountId, typeAccount)) {
             switch (typeAccount) {
                 case "Savings Account":
-                    SavingsAccount[] savingsAccounts = gson.fromJson(json, SavingsAccount[].class);
+                    SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
                     for (int i = 0; i < savingsAccounts.length; i++) {
                         if (savingsAccounts[i].getId().equals(accountId)) {
                             savingsAccounts[i].deposit(amount);
@@ -196,7 +198,7 @@ public class Verify {
                     }
                     break;
                 case "Checkings Account":
-                    CheckingAccount[] checkingsAccounts = gson.fromJson(json, CheckingAccount[].class);
+                    CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
                     for (int i = 0; i < checkingsAccounts.length; i++) {
                         if (checkingsAccounts[i].getId().equals(accountId)) {
                             checkingsAccounts[i].deposit(amount);
