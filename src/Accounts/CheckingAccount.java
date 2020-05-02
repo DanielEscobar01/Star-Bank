@@ -28,7 +28,7 @@ public class CheckingAccount extends Account {
      * @param value The amount to withdraw
      */
     @Override
-    public void withdraw(float value) {
+    public void withdraw(double value) {
         //The bank will retire the value plus the 1.7% of comission
         if (super.getBalance() >= 10000 + value + (value * 0.017)) {
             this.setBalance(this.getBalance() - value);

@@ -11,7 +11,7 @@ package Accounts;
  */
 public class SavingsAccount extends Account {
 
-    private float interest;
+    private double interest;
     
     /**
      * Constructor of the saving account 
@@ -27,7 +27,7 @@ public class SavingsAccount extends Account {
      *
      * @return The interest of the savings account
      */
-    public float getInterest() {
+    public double getInterest() {
         return interest;
     }
 
@@ -58,7 +58,7 @@ public class SavingsAccount extends Account {
      * @param value The amount to withdraw
      */
     @Override
-    public void withdraw(float value) {
+    public void withdraw(double value) {
         //The bank will retire the value plus the 2% of comission
         if (super.getBalance() >= 10000 + value + (value * 0.02)) {
             this.setBalance(this.getBalance() - value);

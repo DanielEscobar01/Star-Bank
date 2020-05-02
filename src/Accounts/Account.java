@@ -17,7 +17,7 @@ public abstract class Account {
 
     protected String id;
     protected String titularId;
-    protected float balance;
+    protected double balance;
     protected boolean isActive;
     protected String office;
     protected ArrayList<Operation> operations = new ArrayList<>();
@@ -78,7 +78,7 @@ public abstract class Account {
      *
      * @return The balance of the account
      */
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -87,7 +87,7 @@ public abstract class Account {
      *
      * @param balance The balance of the account
      */
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -134,13 +134,13 @@ public abstract class Account {
      *
      * @param value The value to be withdraw from the account
      */
-    abstract public void withdraw(float value);
+    abstract public void withdraw(double value);
 
     /**
      * This method let us make a deposit into an account
      * @param value The amount to be deposit
      */
-    public void deposit(float value) {
+    public void deposit(double value) {
         if (balance < 10000 && value >= 20000) {
             isActive = true;
         }

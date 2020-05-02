@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author danielescobar
@@ -17,6 +19,9 @@ public class DepositWindow extends javax.swing.JFrame {
     public DepositWindow() {
         initComponents();
         this.setResizable(false);
+        accountId.setTransferHandler(null); // This method does not let the user copy and paste into the id field
+        depositAmount.setTransferHandler(null); // This method does not let the user copy and paste into the id field
+
     }
 
     /**
@@ -51,8 +56,20 @@ public class DepositWindow extends javax.swing.JFrame {
         accountIdLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         accountIdLabel.setText("ENTER ACCOUNT ID:");
 
+        accountId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                accountIdKeyTyped(evt);
+            }
+        });
+
         depositAmountLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         depositAmountLabel.setText("ENTER DEPOSIT AMOUNT:");
+
+        depositAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                depositAmountKeyTyped(evt);
+            }
+        });
 
         makeDeposit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         makeDeposit.setText("MAKE DEPOSIT");
@@ -111,6 +128,20 @@ public class DepositWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void accountIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_accountIdKeyTyped
+        // The next instructions will not let the user type non numeric values
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }    }//GEN-LAST:event_accountIdKeyTyped
+
+    private void depositAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_depositAmountKeyTyped
+        // The next instructions will not let the user type non numeric values
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }    }//GEN-LAST:event_depositAmountKeyTyped
 
     /**
      * @param args the command line arguments

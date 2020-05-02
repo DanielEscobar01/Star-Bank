@@ -79,11 +79,6 @@ public class CreateAccount extends javax.swing.JFrame {
         accountTypeLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         accountTypeLabel.setText("SELECT TYPE OF ACCOUNT:");
 
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
         id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 idKeyTyped(evt);
@@ -179,10 +174,6 @@ public class CreateAccount extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
 
     private void idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyTyped
         // The next instructions will not let the user type non numeric values
