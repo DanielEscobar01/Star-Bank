@@ -51,20 +51,8 @@ public class DepositWindow extends javax.swing.JFrame {
         accountIdLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         accountIdLabel.setText("ENTER ACCOUNT ID:");
 
-        accountId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accountIdActionPerformed(evt);
-            }
-        });
-
         depositAmountLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         depositAmountLabel.setText("ENTER DEPOSIT AMOUNT:");
-
-        depositAmount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositAmountActionPerformed(evt);
-            }
-        });
 
         makeDeposit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         makeDeposit.setText("MAKE DEPOSIT");
@@ -123,14 +111,6 @@ public class DepositWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void accountIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accountIdActionPerformed
-
-    private void depositAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositAmountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_depositAmountActionPerformed
 
     /**
      * @param args the command line arguments

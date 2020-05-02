@@ -121,9 +121,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="accountId">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accountIdActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="depositAmountLabel">
           <Properties>
@@ -134,9 +131,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="depositAmount">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositAmountActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="makeDeposit">
           <Properties>
