@@ -39,7 +39,7 @@ public class Cashier {
      */
     public void deactivateAccount(String id, String titularId, String typeAccount) {
         Verify verify = new Verify();
-        
+        verify.deactivateAccount(id, titularId, typeAccount);
     }
 
     public void makeDeposit(String accountId,double amount){

@@ -6,6 +6,7 @@
 package View;
 
 import Controllers.Cashier;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -19,6 +20,8 @@ public class DeactivateWindow extends javax.swing.JFrame {
     public DeactivateWindow() {
         initComponents();
         this.setResizable(false);
+        titularId.setTransferHandler(null); // This method does not let the user copy and paste into the id field
+
     }
 
     /**
@@ -39,6 +42,8 @@ public class DeactivateWindow extends javax.swing.JFrame {
         deactivate = new javax.swing.JButton();
         accountType = new javax.swing.JComboBox<>();
         accountTypeLabel = new javax.swing.JLabel();
+        accountIdLabel2 = new javax.swing.JLabel();
+        titularId = new javax.swing.JTextField();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -54,7 +59,7 @@ public class DeactivateWindow extends javax.swing.JFrame {
         titleLabel.setText("STAR BANK");
 
         accountIdLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
-        accountIdLabel.setText("ENTER ACCOUNT ID:");
+        accountIdLabel.setText("ENTER TITULAR ID:");
 
         deactivate.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         deactivate.setText("DEACTIVATE");
@@ -69,6 +74,15 @@ public class DeactivateWindow extends javax.swing.JFrame {
         accountTypeLabel.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         accountTypeLabel.setText("SELECT ACCOUNT TYPE:");
 
+        accountIdLabel2.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
+        accountIdLabel2.setText("ENTER ACCOUNT ID:");
+
+        titularId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                titularIdKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -78,18 +92,23 @@ public class DeactivateWindow extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(titleLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deactivate)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(accountIdLabel)
-                                    .addComponent(accountTypeLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(accountId)
-                                    .addComponent(accountType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(deactivate)
+                                .addComponent(accountId, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(accountTypeLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(accountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(accountIdLabel)
+                                .addComponent(accountIdLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(titularId, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -97,17 +116,21 @@ public class DeactivateWindow extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accountId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(accountIdLabel2))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountIdLabel)
-                    .addComponent(accountId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(titularId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(accountTypeLabel))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(deactivate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69))
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,11 +148,20 @@ public class DeactivateWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deactivateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deactivateMouseClicked
-        // DESACTIVAR CUENTA.
-        String id = accountId.getText();
-        Cashier cajero = new Cashier();
-       // cajero.deactivateAccount(id);
+        String accountId = this.accountId.getText();
+        String titularId = this.titularId.getText();
+        String accountType = this.accountType.getSelectedItem().toString();
+        Cashier cashier = new Cashier();
+        cashier.deactivateAccount(accountId, titularId, accountType);
     }//GEN-LAST:event_deactivateMouseClicked
+
+    private void titularIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_titularIdKeyTyped
+        // The next instructions will not let the user type non numeric values
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_titularIdKeyTyped
 
     /**
      * @param args the command line arguments
@@ -170,11 +202,13 @@ public class DeactivateWindow extends javax.swing.JFrame {
     private javax.swing.JTextField accountId;
     private javax.swing.JLabel accountIdLabel;
     private javax.swing.JLabel accountIdLabel1;
+    private javax.swing.JLabel accountIdLabel2;
     private javax.swing.JComboBox<String> accountType;
     private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JButton deactivate;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JTextField titularId;
     // End of variables declaration//GEN-END:variables
 }

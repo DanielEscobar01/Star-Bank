@@ -141,7 +141,7 @@ public class Verify {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "The account does not exist");
+            JOptionPane.showMessageDialog(null, "The account does not exist, please check the account ID and the type of account");
         }
     }
 
@@ -153,19 +153,23 @@ public class Verify {
      * @param typeAccount The type of account
      */
     public void addAccount(String id, String titularId, String typeAccount) {
-        Gson gson = new Gson();     //Object to implements GSON API
-        // Filtering information by type of account with cases
-        switch (typeAccount) {
-            case "Savings Account":
-                SavingsAccount a = new SavingsAccount(id, titularId);
-                String newSavingAccount = gson.toJson(a) + "]";
-                database.writeNewAccount(typeAccount, newSavingAccount);
-                break;
-            case "Checkings Account":
-                CheckingAccount b = new CheckingAccount(id, titularId);
-                String newCheckingAccount = gson.toJson(b) + "]";
-                database.writeNewAccount(typeAccount, newCheckingAccount);
-                break;
+        if (existAccountId(id, typeAccount)) {
+            JOptionPane.showMessageDialog(null, "The account is already created");
+        } else {
+            Gson gson = new Gson();     //Object to implements GSON API
+            // Filtering information by type of account with cases
+            switch (typeAccount) {
+                case "Savings Account":
+                    SavingsAccount a = new SavingsAccount(id, titularId);
+                    String newSavingAccount = gson.toJson(a) + "]";
+                    database.writeNewAccount(typeAccount, newSavingAccount);
+                    break;
+                case "Checkings Account":
+                    CheckingAccount b = new CheckingAccount(id, titularId);
+                    String newCheckingAccount = gson.toJson(b) + "]";
+                    database.writeNewAccount(typeAccount, newCheckingAccount);
+                    break;
+            }
         }
     }
 
