@@ -175,6 +175,7 @@ public class Verify {
 
     /**
      * This method let us make a deposit into an account
+     *
      * @param accountId The identification of the account
      * @param typeAccount The type of the account
      * @param amount The amount to be deposited into the account
@@ -212,5 +213,5 @@ public class Verify {
 
         }
     }
-    
+
 }
