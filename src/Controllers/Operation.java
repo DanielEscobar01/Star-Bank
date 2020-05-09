@@ -6,7 +6,6 @@
 package Controllers;
 
 import Accounts.Account;
-import Accounts.SavingsAccount;
 import Office.BranchOffice;
 import java.util.Date;
 
@@ -18,22 +17,18 @@ import java.util.Date;
 public class Operation {
 
     private Date date;
-    private Account account;
+    private String account;
     private String type;
     private BranchOffice branchOffice;
-
-    public Operation() {
-        SavingsAccount sv = new SavingsAccount("nn", "22");
-        this.account = sv;
-    }
 
     /**
      * This constructor will set up the values of the operation
      *
+     * @param account The account of the operation
      * @param type 0:Operation==deposit, 1:Operation==withdraw,
-     * 2:Operation==Deactivate
+     * 2:Operation==Deactivate, 3:Operation==Activate
      */
-    public Operation(int type) {
+    public Operation(Account account, int type) {
         switch (type) {
             case 0:
                 setType("Deposit");
@@ -45,9 +40,12 @@ public class Operation {
                 setType("Deactivate");
                 break;
             case 3:
+                setType("Activate");
                 break;
         }
-
+        setAccount(account);
+        Date date = new Date();
+        setDate(date);
     }
 
     /**
@@ -73,7 +71,7 @@ public class Operation {
      *
      * @return The account of the operation
      */
-    public Account getAccount() {
+    public String getAccount() {
         return account;
     }
 
@@ -83,7 +81,7 @@ public class Operation {
      * @param account The account of the operation
      */
     public void setAccount(Account account) {
-        this.account = account;
+        this.account = account.getId();
     }
 
     /**
@@ -106,6 +104,7 @@ public class Operation {
 
     /**
      * This method let us get the branch office of the operation
+     *
      * @return The branchOffice of the operation
      */
     public BranchOffice getBranchOffice() {
@@ -114,10 +113,16 @@ public class Operation {
 
     /**
      * This method let us set the branch office of the operation
+     *
      * @param branchOffice The branchOffice of the operation
      */
     public void setBranchOffice(BranchOffice branchOffice) {
         this.branchOffice = branchOffice;
+    }
+
+    @Override
+    public String toString() {
+        return "Operation{" + "Date=" + date + ", Account=" + account + ", Type=" + type + '}';
     }
 
 }

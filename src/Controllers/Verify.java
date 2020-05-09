@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author danielescobar
  */
 public class Verify {
-    
+
     Gson gson = new Gson();
     String json;
     Database database = new Database();
@@ -167,12 +167,16 @@ public class Verify {
                 case "Savings Account":
                     SavingsAccount a = new SavingsAccount(id, titularId);
                     String newSavingAccount = gson.toJson(a) + "]";
+                    Operation operation = new Operation(a.getId(), 3);
                     database.writeNewAccount(typeAccount, newSavingAccount);
+                    database.addOperation(operation);
                     break;
                 case "Checkings Account":
                     CheckingAccount b = new CheckingAccount(id, titularId);
                     String newCheckingAccount = gson.toJson(b) + "]";
-                    database.writeNewAccount(typeAccount, newCheckingAccount);
+                    Operation operation = new Operation(b.getId(), 3);
+                    database.writeNewAccount(typeAccount, newCheckingAccount);                   
+                    database.addOperation(operation);
                     break;
             }
         }
@@ -221,8 +225,8 @@ public class Verify {
             }
         } else {
             JOptionPane.showMessageDialog(null, "The account does not exist, please check the account ID and the type of account");
-            
+
         }
     }
-    
+
 }
