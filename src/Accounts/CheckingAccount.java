@@ -5,8 +5,11 @@
  */
 package Accounts;
 
+import javax.swing.JOptionPane;
+
 /**
  * This class let us create checking accounts
+ *
  * @author danielescobar
  */
 public class CheckingAccount extends Account {
@@ -32,6 +35,9 @@ public class CheckingAccount extends Account {
         //The bank will retire the value plus the 1.7% of comission
         if (super.getBalance() >= 10000 + value + (value * 0.017)) {
             this.setBalance(this.getBalance() - value);
+            JOptionPane.showMessageDialog(null, "Succesfull Withdraw");
+        } else {
+            JOptionPane.showMessageDialog(null, "Not enought funds");
         }
     }
 

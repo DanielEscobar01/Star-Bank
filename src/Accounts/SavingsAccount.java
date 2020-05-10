@@ -5,16 +5,20 @@
  */
 package Accounts;
 
+import javax.swing.JOptionPane;
+
 /**
  * This method let us create savings accounts
+ *
  * @author danielescobar
  */
 public class SavingsAccount extends Account {
 
     private double interest;
-    
+
     /**
-     * Constructor of the saving account 
+     * Constructor of the saving account
+     *
      * @param id The identification of the account
      * @param titularId The identification of the titular of the account
      */
@@ -62,6 +66,9 @@ public class SavingsAccount extends Account {
         //The bank will retire the value plus the 2% of comission
         if (super.getBalance() >= 10000 + value + (value * 0.02)) {
             this.setBalance(this.getBalance() - value);
+            JOptionPane.showMessageDialog(null, "Succesfull Withdraw");
+        } else {
+            JOptionPane.showMessageDialog(null, "Not enought funds");
         }
     }
 

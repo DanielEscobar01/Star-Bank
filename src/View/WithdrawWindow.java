@@ -175,11 +175,6 @@ public class WithdrawWindow extends javax.swing.JFrame {
         double amount = Double.parseDouble(this.amount.getText());
         Cashier cashier = new Cashier();
         cashier.makeWithDraw(accountId, titularId, accountType,amount);
-        
-        
-        
-        
-        
         this.setVisible(false);
         CashierWindow cashierWindow = new CashierWindow();
         cashierWindow.setVisible(true);

@@ -240,7 +240,48 @@ public class Verify {
     }
 
     public void withDraw(String accountId, String titular, String typeAccount, double amount) {
-        
+        if (existAccountId(accountId, typeAccount)) {
+            if (isCorrectTitularId(titular, accountId, typeAccount)) {
+                Database database = new Database();
+                switch (typeAccount) {
+                    case "Savings Account":
+                        SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
+
+                        for (int i = 0; i < savingsAccounts.length; i++) {
+                            if (savingsAccounts[i].getId().equals(accountId)) {
+
+                            }
+                        }
+                        database.cleanJson(typeAccount);
+                        for (int i = 0; i < savingsAccounts.length; i++) {
+                            String newSavingAccount = gson.toJson(savingsAccounts[i]) + "]";
+                            database.writeNewAccount(typeAccount, newSavingAccount);
+                        }
+                        Operation operationA = new Operation(accountId, 2);
+                        database.addOperation(operationA.toString() + "]");
+                        break;
+                    case "Checkings Account":
+                        CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
+                        for (int i = 0; i < checkingsAccounts.length; i++) {
+                            if (checkingsAccounts[i].getId().equals(accountId)) {
+
+                            }
+                        }
+                        database.cleanJson(typeAccount);
+                        for (int i = 0; i < checkingsAccounts.length; i++) {
+                            String newCheckingAccount = gson.toJson(checkingsAccounts[i]) + "]";
+                            database.writeNewAccount(typeAccount, newCheckingAccount);
+                        }
+                        Operation operationB = new Operation(accountId, 2);
+                        database.addOperation(operationB.toString() + "]");
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "The only one who can withdraw money from the account is the titular");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "The account does not exist, please check the account ID and the type of account");
+        }
     }
 
 }
