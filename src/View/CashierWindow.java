@@ -74,6 +74,11 @@ public class CashierWindow extends javax.swing.JFrame {
 
         withdraw.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         withdraw.setText("WITHDRAW");
+        withdraw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                withdrawMouseClicked(evt);
+            }
+        });
 
         exit.setFont(new java.awt.Font("PT Serif Caption", 3, 18)); // NOI18N
         exit.setText("EXIT");
@@ -133,27 +138,30 @@ public class CashierWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountMouseClicked
-        // CREATE AN ACCOUNT
         CreateAccount createAccountWindow = new CreateAccount();
         createAccountWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_createAccountMouseClicked
 
     private void depositMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_depositMouseClicked
-        // BOTON CONSIGNAR
         DepositWindow depositWindow = new DepositWindow();
         depositWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_depositMouseClicked
 
     private void deactivateAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deactivateAccountMouseClicked
-        // BOTON DESACTIVAR CUENTA
         DeactivateWindow deactivateWindow = new DeactivateWindow();
         deactivateWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_deactivateAccountMouseClicked
 
-    /**
+    private void withdrawMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_withdrawMouseClicked
+        WithdrawWindow withdrawWindow = new WithdrawWindow();
+        withdrawWindow.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_withdrawMouseClicked
+
+    /**WithdrawWindow
      * @param args the command line arguments
      */
     public static void main(String args[]) {

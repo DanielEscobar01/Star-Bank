@@ -130,7 +130,7 @@ public class Verify {
                             database.writeNewAccount(typeAccount, newSavingAccount);
                         }
                         Operation operationA = new Operation(id, 2);
-                        database.addOperation(operationA.toString()+ "]");
+                        database.addOperation(operationA.toString() + "]");
                         break;
                     case "Checkings Account":
                         CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
@@ -145,7 +145,7 @@ public class Verify {
                             database.writeNewAccount(typeAccount, newCheckingAccount);
                         }
                         Operation operationB = new Operation(id, 2);
-                        database.addOperation(operationB.toString()+ "]");
+                        database.addOperation(operationB.toString() + "]");
                         break;
                 }
             }
@@ -173,7 +173,7 @@ public class Verify {
                     String newSavingAccount = gson.toJson(a) + "]";
                     Operation operationA = new Operation(a.getId(), 3);
                     database.writeNewAccount(typeAccount, newSavingAccount);
-                    database.addOperation(operationA.toString()+ "]");
+                    database.addOperation(operationA.toString() + "]");
                     break;
                 case "Checkings Account":
                     CheckingAccount b = new CheckingAccount(id, titularId);
@@ -214,7 +214,7 @@ public class Verify {
                     }
                     Operation operationA = new Operation(accountId, 0);
                     operationA.setAmount(amount);
-                    database.addOperation(operationA.toString()+ "]");
+                    database.addOperation(operationA.toString() + "]");
                     break;
                 case "Checkings Account":
                     CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
@@ -230,13 +230,17 @@ public class Verify {
                     }
                     Operation operationB = new Operation(accountId, 0);
                     operationB.setAmount(amount);
-                    database.addOperation(operationB.toString()+ "]");
+                    database.addOperation(operationB.toString() + "]");
                     break;
             }
         } else {
             JOptionPane.showMessageDialog(null, "The account does not exist, please check the account ID and the type of account");
 
         }
+    }
+
+    public void withDraw(String accountId, String titular, String typeAccount, double amount) {
+        
     }
 
 }

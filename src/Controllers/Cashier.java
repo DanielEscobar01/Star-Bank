@@ -43,13 +43,26 @@ public class Cashier {
 
     /**
      * This method let us make a deposit into an account
-     * @param accountType The type of the account 
+     *
+     * @param accountType The type of the account
      * @param accountId The identification of the account
      * @param amount The amount to be deposited into the account
      */
     public void makeDeposit(String accountType, String accountId, double amount) {
         Verify verify = new Verify();
         verify.makeDeposit(accountId, accountType, amount);
+    }
+    
+    /**
+     * This method let us make a withdraw
+     * @param accountId The identification of the account
+     * @param titular The identification of the  titular
+     * @param accountType The type of the account
+     * @param amount The amount to withdraw from the account
+     */
+    public void makeWithDraw(String accountId, String titular, String accountType, double amount) {
+        Verify verify = new Verify();
+        verify.withDraw(accountId, titular, accountType, amount);
     }
 
 }
