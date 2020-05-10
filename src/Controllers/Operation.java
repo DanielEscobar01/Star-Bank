@@ -20,6 +20,7 @@ public class Operation {
     private String account;
     private String type;
     private BranchOffice branchOffice;
+    private double amount;
 
     /**
      * This constructor will set up the values of the operation
@@ -46,6 +47,7 @@ public class Operation {
         setAccount(accountId);
         Date date = new Date();
         setDate(date);
+        setAmount(0);
     }
 
     /**
@@ -122,7 +124,25 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "Operation{" + "Date=" + date + ", Account=" + account + ", Type=" + type + '}';
+        return "{" + "Date=" + date + ", Account=" + account + ", Type=" + type + ", Amount=" + amount + '}';
+    }
+
+    /**
+     * This method ley us get the amount of the operation
+     *
+     * @return The amount of the operation
+     */
+    public double getAmount() {
+        return amount;
+    }
+
+    /**
+     * This method let us set the amount of the operation
+     *
+     * @param amount The amount of the operation
+     */
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
 }

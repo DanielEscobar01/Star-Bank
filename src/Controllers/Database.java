@@ -143,6 +143,7 @@ public class Database {
 
     /**
      * This method let us get the operations
+     *
      * @return The operations of the company
      */
     public String returnOperations() {
@@ -166,25 +167,26 @@ public class Database {
 
     /**
      * This method let us add a new operation
+     *
      * @param operation The operation to be added
      */
-    public void addOperation(String operation){
-        String json = returnJson("Savings Account");
-                String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
-                if (json.length() == 2) {
-                    auxiliar = auxiliar + operation;
-                } else {
-                    auxiliar = auxiliar + "," + operation;
-                }
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter("operations.json"))) {
-                    bw.write(auxiliar);
-                } catch (FileNotFoundException ex) {
-                    System.out.println(ex.getMessage());
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
+    public void addOperation(String operation) {
+        String json = returnOperations();
+        String auxiliar = json.substring(0, json.length() - 1); //Removes the last ]
+        if (json.length() == 2) {
+            auxiliar = auxiliar + operation;
+        } else {
+            auxiliar = auxiliar + "," + operation;
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("operations.json"))) {
+            bw.write(auxiliar);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-            
+
     /**
      *
      * @param json
