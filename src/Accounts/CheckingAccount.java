@@ -34,7 +34,7 @@ public class CheckingAccount extends Account {
     public void withdraw(double value) {
         //The bank will retire the value plus the 1.7% of comission
         if (super.getBalance() >= 10000 + value + (value * 0.017)) {
-            this.setBalance(this.getBalance() - value);
+            this.setBalance(this.getBalance() - value - (value * 0.017));
             JOptionPane.showMessageDialog(null, "Succesfull Withdraw");
         } else {
             JOptionPane.showMessageDialog(null, "Not enought funds");
