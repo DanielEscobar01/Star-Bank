@@ -129,6 +129,8 @@ public class Verify {
                             String newSavingAccount = gson.toJson(savingsAccounts[i]) + "]";
                             database.writeNewAccount(typeAccount, newSavingAccount);
                         }
+                        Operation operationA = new Operation(id, 2);
+                        database.addOperation(operationA.toString());
                         break;
                     case "Checkings Account":
                         CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
@@ -142,6 +144,8 @@ public class Verify {
                             String newCheckingAccount = gson.toJson(checkingsAccounts[i]) + "]";
                             database.writeNewAccount(typeAccount, newCheckingAccount);
                         }
+                        Operation operationB = new Operation(id, 2);
+                        database.addOperation(operationB.toString());
                         break;
                 }
             }
@@ -167,16 +171,16 @@ public class Verify {
                 case "Savings Account":
                     SavingsAccount a = new SavingsAccount(id, titularId);
                     String newSavingAccount = gson.toJson(a) + "]";
-                    Operation operation = new Operation(a.getId(), 3);
+                    Operation operationA = new Operation(a.getId(), 3);
                     database.writeNewAccount(typeAccount, newSavingAccount);
-                    database.addOperation(operation);
+                    database.addOperation(operationA.toString());
                     break;
                 case "Checkings Account":
                     CheckingAccount b = new CheckingAccount(id, titularId);
                     String newCheckingAccount = gson.toJson(b) + "]";
-                    Operation operation = new Operation(b.getId(), 3);
-                    database.writeNewAccount(typeAccount, newCheckingAccount);                   
-                    database.addOperation(operation);
+                    Operation operationB = new Operation(b.getId(), 3);
+                    database.writeNewAccount(typeAccount, newCheckingAccount);
+                    database.addOperation(operationB.toString());
                     break;
             }
         }
@@ -208,6 +212,8 @@ public class Verify {
                         String newSavingAccount = gson.toJson(savingsAccounts[i]) + "]";
                         database.writeNewAccount(typeAccount, newSavingAccount);
                     }
+                    Operation operationA = new Operation(accountId, 0);
+                    database.addOperation(operationA.toString());
                     break;
                 case "Checkings Account":
                     CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
@@ -221,6 +227,8 @@ public class Verify {
                         String newCheckingAccount = gson.toJson(checkingsAccounts[i]) + "]";
                         database.writeNewAccount(typeAccount, newCheckingAccount);
                     }
+                    Operation operationB = new Operation(accountId, 0);
+                    database.addOperation(operationB.toString());
                     break;
             }
         } else {

@@ -28,7 +28,7 @@ public class Operation {
      * @param type 0:Operation==deposit, 1:Operation==withdraw,
      * 2:Operation==Deactivate, 3:Operation==Activate
      */
-    public Operation(Account account, int type) {
+    public Operation(String accountId, int type) {
         switch (type) {
             case 0:
                 setType("Deposit");
@@ -43,7 +43,7 @@ public class Operation {
                 setType("Activate");
                 break;
         }
-        setAccount(account);
+        setAccount(accountId);
         Date date = new Date();
         setDate(date);
     }
@@ -80,8 +80,8 @@ public class Operation {
      *
      * @param account The account of the operation
      */
-    public void setAccount(Account account) {
-        this.account = account.getId();
+    public void setAccount(String accountID) {
+        this.account = accountID;
     }
 
     /**
