@@ -239,6 +239,13 @@ public class Verify {
         }
     }
 
+    /**
+     * This method let us do a withdraw from the account
+     * @param accountId The identification of the account
+     * @param titular The identification of the  titular
+     * @param typeAccount The type of the account
+     * @param amount The amount to be withdraw into the account
+     */
     public void withDraw(String accountId, String titular, String typeAccount, double amount) {
         if (existAccountId(accountId, typeAccount)) {
             if (isCorrectTitularId(titular, accountId, typeAccount)) {
@@ -246,10 +253,9 @@ public class Verify {
                 switch (typeAccount) {
                     case "Savings Account":
                         SavingsAccount[] savingsAccounts = gson.fromJson(database.returnJson(typeAccount), SavingsAccount[].class);
-
                         for (int i = 0; i < savingsAccounts.length; i++) {
                             if (savingsAccounts[i].getId().equals(accountId)) {
-
+                                savingsAccounts[i].withdraw(amount);
                             }
                         }
                         database.cleanJson(typeAccount);
@@ -257,14 +263,14 @@ public class Verify {
                             String newSavingAccount = gson.toJson(savingsAccounts[i]) + "]";
                             database.writeNewAccount(typeAccount, newSavingAccount);
                         }
-                        Operation operationA = new Operation(accountId, 2);
+                        Operation operationA = new Operation(accountId, 1);
                         database.addOperation(operationA.toString() + "]");
                         break;
                     case "Checkings Account":
                         CheckingAccount[] checkingsAccounts = gson.fromJson(database.returnJson(typeAccount), CheckingAccount[].class);
                         for (int i = 0; i < checkingsAccounts.length; i++) {
                             if (checkingsAccounts[i].getId().equals(accountId)) {
-
+                                checkingsAccounts[i].withdraw(amount);
                             }
                         }
                         database.cleanJson(typeAccount);
@@ -272,7 +278,7 @@ public class Verify {
                             String newCheckingAccount = gson.toJson(checkingsAccounts[i]) + "]";
                             database.writeNewAccount(typeAccount, newCheckingAccount);
                         }
-                        Operation operationB = new Operation(accountId, 2);
+                        Operation operationB = new Operation(accountId, 1);
                         database.addOperation(operationB.toString() + "]");
                         break;
                 }

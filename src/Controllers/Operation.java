@@ -25,7 +25,7 @@ public class Operation {
     /**
      * This constructor will set up the values of the operation
      *
-     * @param account The account of the operation
+     * @param accountId The account ID of the operation
      * @param type 0:Operation==deposit, 1:Operation==withdraw,
      * 2:Operation==Deactivate, 3:Operation==Activate
      */

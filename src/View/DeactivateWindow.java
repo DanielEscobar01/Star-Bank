@@ -153,6 +153,9 @@ public class DeactivateWindow extends javax.swing.JFrame {
         String accountType = this.accountType.getSelectedItem().toString();
         Cashier cashier = new Cashier();
         cashier.deactivateAccount(accountId, titularId, accountType);
+        this.setVisible(false);
+        CashierWindow cashierWindow = new CashierWindow();
+        cashierWindow.setVisible(true);
     }//GEN-LAST:event_deactivateMouseClicked
 
     private void titularIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_titularIdKeyTyped

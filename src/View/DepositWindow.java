@@ -153,6 +153,9 @@ public class DepositWindow extends javax.swing.JFrame {
         double deposit = Double.parseDouble(this.depositAmount.getText());
         Cashier cashier = new Cashier();
         cashier.makeDeposit(accountType, account, deposit);
+        this.setVisible(false);
+        CashierWindow cashierWindow = new CashierWindow();
+        cashierWindow.setVisible(true);
     }//GEN-LAST:event_makeDepositMouseClicked
 
     /**
