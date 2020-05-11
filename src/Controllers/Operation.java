@@ -5,7 +5,6 @@
  */
 package Controllers;
 
-import Accounts.Account;
 import Office.BranchOffice;
 import java.util.Date;
 
@@ -80,7 +79,7 @@ public class Operation {
     /**
      * This method let us set the account of the operation
      *
-     * @param account The account of the operation
+     * @param accountID The account of the operation 
      */
     public void setAccount(String accountID) {
         this.account = accountID;
@@ -124,7 +123,7 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "{" + "Date=" + date + ", Account=" + account + ", Type=" + type + ", Amount=" + amount + '}';
+        return "Operation{" + "date=" + date + ", account=" + account + ", type=" + type + ", amount=" + amount + '}';
     }
 
     /**
